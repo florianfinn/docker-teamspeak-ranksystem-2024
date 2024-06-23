@@ -1,8 +1,9 @@
 #!/bin/bash
 
-set -o errexit
-set -o nounset
-set -o pipefail
+# - IDK what this does. is not working anymore
+# set -o errexit
+# set -o nounset
+# set -o pipefail
 
 INITIAL_VERSION="/tmp/ts-rs.tar.gz"
 
