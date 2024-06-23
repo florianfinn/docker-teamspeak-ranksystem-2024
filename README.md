@@ -1,5 +1,5 @@
 # docker-teamspeak-ranksystem
-WIP (currently more a template) Image for https://ts-n.net/ranksystem.php
+Selfmade updated version for php. Somehow it works now.
 
 # usage
 ## Start a teamspeak 3 server
@@ -44,6 +44,37 @@ docker run -d \
  -v Teamspeak_Ranksystem \
  jusito/docker-teamspeak-ranksystem
 ```
+
+## Compose example
+
+```
+services:
+  ranksystem:
+    build:
+      dockerfile: ./Dockerfile
+    container_name: teamspeak_ranksystem
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./data/:/var/www/html/
+    networks:
+      default: null
+  ranksystemMysql:
+    image: mysql
+    container_name: ranksystem_mysql
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: VERYSTRONGPASS
+    networks:
+      default: null
+    volumes:
+      - ./mysql/:/var/lib/mysql
+
+
+```
+
 
 ## follow ranksystem installation
 
